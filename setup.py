@@ -3,7 +3,7 @@ from setuptools import setup
 import meta
 
 setup(
-    name='django-meta',
+    name='ud-django-meta',
     description='Pluggable app for handling webpage meta tags and OpenGraph '
     'properties',
     long_description=open('README.rst').read(),
@@ -12,11 +12,9 @@ setup(
     package_data={
         'meta': ['templates/*.html'],
     },
-    author='Monwara LLC',
-    maintainer='Nephila',
-    author_email='branko@monwara.com',
-    maintainer_email='info@nephila.it',
-    url='https://github.com/nephila/django-meta',
+    maintainer='Udemy Developers',
+    maintainer_email='dev@udemy.com',
+    url='https://github.com/udemy/django-meta',
     license='BSD',
     install_requires=[
         'Django>=1.4',
