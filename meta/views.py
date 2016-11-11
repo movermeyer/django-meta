@@ -28,6 +28,8 @@ class Meta(object):
         self.use_og = kwargs.get('use_og', settings.USE_OG_PROPERTIES)
         self.use_twitter = kwargs.get('use_twitter', settings.USE_TWITTER_PROPERTIES)
         self.use_googleplus = kwargs.get('use_googleplus', settings.USE_GOOGLEPLUS_PROPERTIES)
+        self.twitter_image = kwargs.get('twitter_image')
+        self.facebook_image = kwargs.get('facebook_image')
 
     def get_domain(self):
         if self.use_sites:
@@ -115,6 +117,8 @@ class MetadataMixin(object):
     site_name = None
     twitter_site = None
     locale = None
+    twitter_image = None
+    facebook_image = None
     use_sites = settings.USE_SITES
     use_og = settings.USE_OG_PROPERTIES
 
@@ -160,6 +164,12 @@ class MetadataMixin(object):
     def get_meta_locale(self, context={}):
         return self.locale
 
+    def get_meta_twitter_image(self, context={}):
+        return self.twitter_image
+
+    def get_meta_facebook_image(self, context={}):
+        return self.facebook_image
+
     def get_context_data(self, **kwargs):
         context = super(MetadataMixin, self).get_context_data(**kwargs)
         context['meta'] = self.get_meta_class()(
@@ -176,5 +186,7 @@ class MetadataMixin(object):
             site_name=self.get_meta_site_name(context=context),
             twitter_site=self.get_meta_twitter_site(context=context),
             locale=self.get_meta_locale(context=context),
+            twitter_image=self.get_meta_twitter_image(context=context),
+            facebook_image=self.get_meta_facebook_image(context=context),
         )
         return context
